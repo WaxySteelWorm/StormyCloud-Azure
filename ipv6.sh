@@ -63,7 +63,7 @@ az network public-ip create --name $ipV4PublicIp --resource-group $resourceGroup
 
 # Create an IPV6 IP address
 echo "Creating $ipV6PublicIp"
-az network public-ip create --name $ipV6PublicIp --resource-group $resourceGroup --location "$location" --sku $sku --allocation-method $allocationMethod --version IPv6
+az network public-ip create --name $ipV6PublicIp --resource-group $resourceGroup --location "$location" --sku $sku --allocation-method dynamic --version IPv6
 
 # Create public IP addresses for remote access to VMs
 # echo "Creating $ipV4RemoteAccessVm0 and $ipV4RemoteAccessVm1"
