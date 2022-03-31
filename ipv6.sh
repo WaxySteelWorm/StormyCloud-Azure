@@ -98,8 +98,8 @@ az network nsg create --name $nsg --resource-group $resourceGroup --location "$l
 # Create inbound rule for port 3389
 echo "Creating inbound rule in $nsg for port 3389"
 az network nsg rule create --name Allow_SSH --nsg-name $nsg --resource-group $resourceGroup --priority 100 --description "Allow SSH" --access Allow --protocol "*" --direction Inbound --source-address-prefixes "*" --source-port-ranges 22 --destination-address-prefixes "*" --destination-port-ranges 3389
-az network nsg rule create --name Allow_7000 --nsg-name $nsg --resource-group $resourceGroup --priority 100 --description "Allow 7000" --access Allow --protocol "*" --direction Inbound --source-address-prefixes "*" --source-port-ranges 7000 --destination-address-prefixes "*" --destination-port-ranges 3389
-az network nsg rule create --name Allow_7001 --nsg-name $nsg --resource-group $resourceGroup --priority 100 --description "Allow 7001" --access Allow --protocol "*" --direction Inbound --source-address-prefixes "*" --source-port-ranges 7001 --destination-address-prefixes "*" --destination-port-ranges 3389
+az network nsg rule create --name Allow_7000 --nsg-name $nsg --resource-group $resourceGroup --priority 101 --description "Allow 7000" --access Allow --protocol "*" --direction Inbound --source-address-prefixes "*" --source-port-ranges 7000 --destination-address-prefixes "*" --destination-port-ranges 3389
+az network nsg rule create --name Allow_7001 --nsg-name $nsg --resource-group $resourceGroup --priority 102 --description "Allow 7001" --access Allow --protocol "*" --direction Inbound --source-address-prefixes "*" --source-port-ranges 7001 --destination-address-prefixes "*" --destination-port-ranges 3389
 
 
 
