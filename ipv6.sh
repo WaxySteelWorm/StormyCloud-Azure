@@ -100,7 +100,7 @@ az network vnet subnet create --name $subnet --resource-group $resourceGroup --v
 
 # Create NICs
 echo "Creating $nic0 and $nic1"
-az network nic create --name $nic0 --resource-group $resourceGroup --network-security-group $nsg --vnet-name $vNet --subnet $subnet --private-ip-address-version IPv4 --public-ip-address $ipV4RemoteAccessVm1
+az network nic create --name $nic0 --resource-group $resourceGroup --network-security-group $nsg --vnet-name $vNet --subnet $subnet --private-ip-address-version IPv4 
 #az network nic create --name $nic1 --resource-group $resourceGroup --network-security-group $nsg --vnet-name $vNet --subnet $subnet --private-ip-address-version IPv4 --lb-address-pools $lbBackEndPoolV4 --lb-name $loadBalancer --public-ip-address $ipV4RemoteAccessVm0
 
 # Create IPV6 configurations for each NIC
