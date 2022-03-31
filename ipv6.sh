@@ -1,20 +1,3 @@
-#https://docs.microsoft.com/en-us/azure/virtual-network/scripts/virtual-network-cli-sample-ipv6-dual-stack
-# IMPORTANT
-# To use the IPv6 for Azure virtual network feature,
-# you must configure your subscription only once as follows:
-#
-# az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-# az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-#
-# It takes up to 30 minutes for feature registration to complete. 
-# You can check your registration status by running the following Azure CLI command:
-#
-# az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-# az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-#
-# After the registration is complete, run the following command:
-#
-# az provider register --namespace Microsoft.Network
 
 # Variable block
 let "randomIdentifier=$RANDOM*$RANDOM"
@@ -55,7 +38,7 @@ echo "Using resource group $resourceGroup with login: $login, password: $passwor
 
 # Create a resource group
 echo "Creating $resourceGroup in $location..."
-az group create --name $resourceGroup --location "$location" --tags $tag
+az group create --name $resourceGroup --location "$location"
 
 # Create an IPV4 IP address
 echo "Creating $ipV4PublicIp"
