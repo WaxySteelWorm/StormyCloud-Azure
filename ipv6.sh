@@ -1,3 +1,4 @@
+#https://docs.microsoft.com/en-us/azure/virtual-network/scripts/virtual-network-cli-sample-ipv6-dual-stack
 # IMPORTANT
 # To use the IPv6 for Azure virtual network feature,
 # you must configure your subscription only once as follows:
