@@ -117,15 +117,15 @@ az network vnet subnet create --name $subnet --resource-group $resourceGroup --v
 
 # Create NICs
 echo "Creating $nic0 and $nic1"
-az network nic create --name $nic0 --resource-group $resourceGroup --network-security-group $nsg --vnet-name $vNet --subnet $subnet --private-ip-address-version IPv4 --lb-address-pools $lbBackEndPoolV4 --lb-name $loadBalancer --public-ip-address $ipV4RemoteAccessVm1
+az network nic create --name $nic0 --resource-group $resourceGroup --network-security-group $nsg --vnet-name $vNet --subnet $subnet --private-ip-address-version IPv4 --public-ip-address $ipV4RemoteAccessVm1
 #az network nic create --name $nic1 --resource-group $resourceGroup --network-security-group $nsg --vnet-name $vNet --subnet $subnet --private-ip-address-version IPv4 --lb-address-pools $lbBackEndPoolV4 --lb-name $loadBalancer --public-ip-address $ipV4RemoteAccessVm0
 
 # Create IPV6 configurations for each NIC
 echo "Creating $nic0ConfigIpV6 and $nic1ConfigIpV6"
-az network nic ip-config create --name $nic0ConfigIpV6 --nic-name $nic0 --resource-group $resourceGroup --vnet-name $vNet --subnet $subnet --private-ip-address-version IPv6 --lb-address-pools $loadBalancerBackEndPool_v6 --lb-name $loadBalancer
+az network nic ip-config create --name $nic0ConfigIpV6 --nic-name $nic0 --resource-group $resourceGroup --vnet-name $vNet --subnet $subnet --private-ip-address-version IPv6 
 # az network nic ip-config create --name $nic1ConfigIpV6 --nic-name $nic1 --resource-group $resourceGroup --vnet-name $vNet --subnet $subnet --private-ip-address-version IPv6 --lb-address-pools $loadBalancerBackEndPool_v6 --lb-name $loadBalancer
 
 # Create virtual machines
 Creating "$vm0 and $vm1"
-az vm create --name $vm0 --resource-group $resourceGroup --nics $nic0 --size $vmSize --availability-set $availabilitySet --image $image --public-ip-sku $sku --admin-user $login --admin-password $password
+az vm create --name $vm0 --resource-group $resourceGroup --nics $nic0 --size $vmSize --image $image --public-ip-sku $sku --admin-user $login --admin-password $password
 # az vm create --name $vm1 --resource-group $resourceGroup --nics $nic1 --size $vmSize --availability-set $availabilitySet --image $image --public-ip-sku $sku --admin-user $login --admin-password $password
