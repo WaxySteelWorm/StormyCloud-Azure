@@ -71,4 +71,4 @@ echo "Creating outbound rule in $nsg to allow all"
 az network nsg rule create --name allowAllOut --nsg-name $nsg --resource-group $resourceGroup --priority 100 --description "Allow All Out" --access Allow --protocol "*" --direction Outbound --source-address-prefixes "*" --source-port-ranges "*" --destination-address-prefixes "*" --destination-port-ranges "*"
 
 # Create virtual machines
-az vm create --name $vm0 --resource-group $resourceGroup --nics $nic0 --size $vmSize --image $image --admin-user $login --admin-password $password
+az vm create --name $vm0 --resource-group $resourceGroup --nics $nic0 --size $vmSize --image $image --admin-user $login --admin-password $password --public-ip-sku Standard
