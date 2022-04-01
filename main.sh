@@ -8,6 +8,7 @@ login="azureuser"
 password="Pa$$w0rD-$randomIdentifier"
 vNetAddressPrefixes="10.0.0.0/16 fd00:db8:deca::/48"
 location="East US"
+resourceGroup="tor-bridge-rg-$randomIdentifier"
 
 
 
