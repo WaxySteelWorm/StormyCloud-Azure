@@ -21,6 +21,7 @@ ipV6PublicIp="tor--ipV6-public-ip-address-$randomIdentifier"
 sku="BASIC"
 allocationMethod="dynamic"
 nic0="tor-nic0-$randomIdentifier"
+nic0ConfigIpV6="tor-ipV6-config-nic0-$randomIdentifier"
 
 #########################################################################3
 
@@ -52,3 +53,7 @@ az network public-ip create --name $ipV6PublicIp --resource-group $resourceGroup
 # Create NICs
 echo "Creating $nic0"
 az network nic create --name $nic0 --resource-group $resourceGroup --network-security-group $nsg --vnet-name $vNet --subnet $subnet --private-ip-address-version IPv4 --public-ip-address $ipV4PublicIp
+
+# Create IPV6 configurations for each NIC
+echo "Creating $nic0ConfigIpV6 and $nic1ConfigIpV6"
+az network nic ip-config create --name $nic0ConfigIpV6 --nic-name $nic0 --resource-group $resourceGroup --vnet-name $vNet --subnet $subnet --private-ip-address-version IPv6 --public-ip-address $ipV6PublicIp
