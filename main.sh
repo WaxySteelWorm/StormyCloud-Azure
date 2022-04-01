@@ -20,4 +20,4 @@ echo "Creating $resourceGroup in $location..."
 az group create --name $resourceGroup --location "$location" 
 
 # echo "Creating $vNet"
-# az network vnet create --name $vNet --resource-group $resourceGroup --location "$location" --address-prefixes $vNetAddressPrefixes
+az network vnet create --name $vNet --resource-group $resourceGroup --location "$location" --address-prefixes $vNetAddressPrefixes
