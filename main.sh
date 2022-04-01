@@ -7,6 +7,7 @@ vmSize="Standard_B1ms"
 login="azureuser"
 password="Pa$$w0rD-$randomIdentifier"
 vNetAddressPrefixes="10.0.0.0/16 fd00:db8:deca::/48"
+location="East US"
 
 
 
@@ -14,7 +15,7 @@ echo "Using resource group $resourceGroup with login: $login, password: $passwor
 
 # Create a resource group
 echo "Creating $resourceGroup in $location..."
-az group create --name $resourceGroup --location "$location" --tags $tag
+az group create --name $resourceGroup --location "$location" 
 
-echo "Creating $vNet"
-az network vnet create --name $vNet --resource-group $resourceGroup --location "$location" --address-prefixes $vNetAddressPrefixes
+# echo "Creating $vNet"
+# az network vnet create --name $vNet --resource-group $resourceGroup --location "$location" --address-prefixes $vNetAddressPrefixes
