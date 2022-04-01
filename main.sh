@@ -61,9 +61,10 @@ az network nic ip-config create --name $nic0ConfigIpV6 --nic-name $nic0 --resour
 
 # Create inbound rules
 echo "Creating inbound rule in $nsg for port 22"
-az network nsg rule create --name allowSSHin --nsg-name $nsg --resource-group $resourceGroup --priority 100 --description "Allow SSH" --access Allow --protocol "*" --direction Inbound --source-address-prefixes "*" --source-port-ranges 22 --destination-address-prefixes "*" --destination-port-ranges 22
-az network nsg rule create --name allowtor --nsg-name $nsg --resource-group $resourceGroup --priority 101 --description "Allow 7000" --access Allow --protocol "*" --direction Inbound --source-address-prefixes "*" --source-port-ranges 7000 --destination-address-prefixes "*" --destination-port-ranges 7000
-az network nsg rule create --name allowtor2 --nsg-name $nsg --resource-group $resourceGroup --priority 102 --description "Allow 7001" --access Allow --protocol "*" --direction Inbound --source-address-prefixes "*" --source-port-ranges 7001 --destination-address-prefixes "*" --destination-port-ranges 7001
+# az network nsg rule create --name allowSSHin --nsg-name $nsg --resource-group $resourceGroup --priority 100 --description "Allow SSH" --access Allow --protocol "*" --direction Inbound --source-address-prefixes "*" --source-port-ranges 22 --destination-address-prefixes "*" --destination-port-ranges 22
+# az network nsg rule create --name allowtor --nsg-name $nsg --resource-group $resourceGroup --priority 101 --description "Allow 7000" --access Allow --protocol "*" --direction Inbound --source-address-prefixes "*" --source-port-ranges 7000 --destination-address-prefixes "*" --destination-port-ranges 7000
+# az network nsg rule create --name allowtor2 --nsg-name $nsg --resource-group $resourceGroup --priority 102 --description "Allow 7001" --access Allow --protocol "*" --direction Inbound --source-address-prefixes "*" --source-port-ranges 7001 --destination-address-prefixes "*" --destination-port-ranges 7001
+az network nsg rule create --name allowAllOut --nsg-name $nsg --resource-group $resourceGroup --priority 100 --description "Allow All Out" --access Allow --protocol "*" --direction Inbound --source-address-prefixes "*" --source-port-ranges "*" --destination-address-prefixes "*" --destination-port-ranges "*"
 
 
 # Create outbound rule
