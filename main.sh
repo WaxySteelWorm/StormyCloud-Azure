@@ -56,7 +56,7 @@ echo "Creating $nic0"
 az network nic create --name $nic0 --resource-group $resourceGroup --network-security-group $nsg --vnet-name $vNet --subnet $subnet --private-ip-address-version IPv4 --public-ip-address $ipV4PublicIp
 
 # Create IPV6 configurations for each NIC
-echo "Creating $nic0ConfigIpV6 and $nic1ConfigIpV6"
+echo "Creating $nic0ConfigIpV6"
 az network nic ip-config create --name $nic0ConfigIpV6 --nic-name $nic0 --resource-group $resourceGroup --vnet-name $vNet --subnet $subnet --private-ip-address-version IPv6 --public-ip-address $ipV6PublicIp
 
 # Create inbound rules
@@ -71,5 +71,4 @@ echo "Creating outbound rule in $nsg to allow all"
 az network nsg rule create --name allowAllOut --nsg-name $nsg --resource-group $resourceGroup --priority 100 --description "Allow All Out" --access Allow --protocol "*" --direction Outbound --source-address-prefixes "*" --source-port-ranges "*" --destination-address-prefixes "*" --destination-port-ranges "*"
 
 # Create virtual machines
-Creating "$vm0"
 az vm create --name $vm0 --resource-group $resourceGroup --nics $nic0 --size $vmSize --image $image --admin-user $login --admin-password $password
