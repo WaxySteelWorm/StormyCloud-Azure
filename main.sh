@@ -22,6 +22,7 @@ sku="standard"
 allocationMethod="static"
 nic0="tor-nic0-$randomIdentifier"
 nic0ConfigIpV6="tor-ipV6-config-nic0-$randomIdentifier"
+vm0="tor-vm$randomIdentifier"
 
 #########################################################################3
 
