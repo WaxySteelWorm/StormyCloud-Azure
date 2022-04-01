@@ -20,6 +20,8 @@ ipV4PublicIp="tor-ipV4-public-ip-address-$randomIdentifier"
 ipV6PublicIp="tor--ipV6-public-ip-address-$randomIdentifier"
 sku="BASIC"
 allocationMethod="dynamic"
+nic0="tor-nic0-$randomIdentifier"
+
 #########################################################################3
 
 echo "Using resource group $resourceGroup with login: $login, password: $password..."
@@ -46,3 +48,7 @@ az network public-ip create --name $ipV4PublicIp --resource-group $resourceGroup
 # Create an IPV6 IP address
 echo "Creating $ipV6PublicIp"
 az network public-ip create --name $ipV6PublicIp --resource-group $resourceGroup --location "$location" --sku $sku --allocation-method $allocationMethod --version IPv6
+
+# Create NICs
+echo "Creating $nic0"
+az network nic create --name $nic0 --resource-group $resourceGroup --network-security-group $nsg --vnet-name $vNet --subnet $subnet --private-ip-address-version IPv4 --public-ip-address $ipV4PublicIp
