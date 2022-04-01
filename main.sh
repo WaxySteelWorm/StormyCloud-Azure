@@ -57,3 +57,18 @@ az network nic create --name $nic0 --resource-group $resourceGroup --network-sec
 # Create IPV6 configurations for each NIC
 echo "Creating $nic0ConfigIpV6 and $nic1ConfigIpV6"
 az network nic ip-config create --name $nic0ConfigIpV6 --nic-name $nic0 --resource-group $resourceGroup --vnet-name $vNet --subnet $subnet --private-ip-address-version IPv6 --public-ip-address $ipV6PublicIp
+
+# Create inbound rules
+echo "Creating inbound rule in $nsg for port 22"
+az network nsg rule create --name allowSSHin --nsg-name $nsg --resource-group $resourceGroup --priority 100 --description "Allow SSH" --access Allow --protocol "*" --direction Inbound --source-address-prefixes "*" --source-port-ranges 22 --destination-address-prefixes "*" --destination-port-ranges 22
+az network nsg rule create --name allowtor --nsg-name $nsg --resource-group $resourceGroup --priority 101 --description "Allow 7000" --access Allow --protocol "*" --direction Inbound --source-address-prefixes "*" --source-port-ranges 7000 --destination-address-prefixes "*" --destination-port-ranges 7000
+az network nsg rule create --name allowtor2 --nsg-name $nsg --resource-group $resourceGroup --priority 102 --description "Allow 7001" --access Allow --protocol "*" --direction Inbound --source-address-prefixes "*" --source-port-ranges 7001 --destination-address-prefixes "*" --destination-port-ranges 7001
+
+
+# Create outbound rule
+echo "Creating outbound rule in $nsg to allow all"
+az network nsg rule create --name allowAllOut --nsg-name $nsg --resource-group $resourceGroup --priority 100 --description "Allow All Out" --access Allow --protocol "*" --direction Outbound --source-address-prefixes "*" --source-port-ranges "*" --destination-address-prefixes "*" --destination-port-ranges "*"
+
+# Create virtual machines
+Creating "$vm0"
+az vm create --name $vm0 --resource-group $resourceGroup --nics $nic0 --size $vmSize --image $image --admin-user $login --admin-password $password
