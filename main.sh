@@ -1,3 +1,4 @@
+let "randomIdentifier=$RANDOM*$RANDOM"
 image="Canonical:0001-com-ubuntu-server-focal:20_04-lts:latest"
 vmSize="Standard_B1ms"
 login="azureuser"
