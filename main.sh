@@ -1,3 +1,5 @@
+#Variables
+
 let "randomIdentifier=$RANDOM*$RANDOM"
 image="Canonical:0001-com-ubuntu-server-focal:20_04-lts:latest"
 vmSize="Standard_B1ms"
@@ -10,6 +12,7 @@ password="Pa$$w0rD-$randomIdentifier"
 vNetAddressPrefixes="10.0.0.0/16 fd00:db8:deca::/48"
 location="East US"
 resourceGroup="tor-bridge-rg-$randomIdentifier"
+vNet="tor-bridge-vnet-$randomIdentifier"
 
 
 
