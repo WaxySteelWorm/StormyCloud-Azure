@@ -19,7 +19,7 @@ subnetAddressPrefixes="10.0.0.0/24 fd00:db8:deca:deed::/64"
 ipV4PublicIp="tor-ipV4-public-ip-address-$randomIdentifier"
 ipV6PublicIp="tor--ipV6-public-ip-address-$randomIdentifier"
 sku="standard"
-allocationMethod="dynamic"
+allocationMethod="static"
 nic0="tor-nic0-$randomIdentifier"
 nic0ConfigIpV6="tor-ipV6-config-nic0-$randomIdentifier"
 
